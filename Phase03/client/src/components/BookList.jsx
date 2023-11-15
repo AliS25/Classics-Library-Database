@@ -24,7 +24,7 @@ const BookList = () => {
   }, []);
 
   const columnDefs = [
-    { headerName: 'Title', field: 'title' , sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
+    { headerName: 'Title', field: 'title' , sortable: true, filter: 'agTextColumnFilter', lockVisible:true, resizable:true},
     { headerName: 'Author', field: 'author_name', sortable: true, filter: 'agTextColumnFilter' , lockVisible:true},
     { headerName: 'Editor', field: 'editor_name', sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
     { headerName: 'Publisher', field: 'pname', sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
@@ -46,12 +46,13 @@ const BookList = () => {
             />
         </div>
 
-        <div className="ag-theme-alpine" style={{ height: '500px', width: '100%' }}>
+        <div className="ag-theme-alpine" style={{ height: '600px', width: '100%' }}>
           <AgGridReact 
           animateRows = {true} 
           columnDefs={columnDefs} 
           rowData={books} 
-          quickFilterText={quickFilterText}/>
+          quickFilterText={quickFilterText}
+          pagination={true}/>
         </div>
     </div>
   );

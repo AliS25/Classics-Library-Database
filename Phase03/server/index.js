@@ -28,7 +28,9 @@ app.post("/books", async (req, res) => {
 
 app.get("/books", async (req, res) => {
     try {
-        const allBooks = await pool.query("SELECT * FROM book");
+        const allBooks = await pool.query(
+            "SELECT b.*, w.aname AS author_name, e.ename AS editor_name FROM book b LEFT JOIN written_by w ON b.title = w.title AND b.edition = w.edition AND b.copy = w.copy LEFT JOIN edited_by e ON b.title = e.title AND b.edition = e.edition AND b.copy = e.copy"
+            );
         res.json(allBooks.rows);
     } catch (err) {
         console.error(err.message);

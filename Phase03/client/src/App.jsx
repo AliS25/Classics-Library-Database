@@ -1,17 +1,24 @@
 import { useState } from 'react'
 import React, {Fragment} from 'react'
 import './App.css'
+import BookList from './components/BookList'
+import Filters from './components/Filters'
+import bookPic from './assets/LibraryBanner.jpg'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <Fragment>
-      <h1>Counter</h1>
-      <h2>{count}</h2>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
-    </Fragment>
+    <>
+      <div>
+        <h1>Holloway Classics Library Database</h1>
+      </div>
+
+      <img className= "img" src={bookPic} alt="book" width="100%" height="auto"></img>
+
+      <div className='bookList'>
+        <BookList />
+      </div>
+    </>
   )
 }
 

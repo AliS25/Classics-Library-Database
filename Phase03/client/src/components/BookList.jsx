@@ -25,12 +25,12 @@ const BookList = () => {
 
   const columnDefs = [
     { headerName: 'Title', field: 'title' , sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
-    { headerName: 'Author', field: 'author_name', sortable: true, filter: false , lockVisible:true},
-    { headerName: 'Editor', field: 'editor_name', sortable: true, filter: false, lockVisible:true},
-    { headerName: 'Publisher', field: 'pname', sortable: true, filter: false, lockVisible:true},
+    { headerName: 'Author', field: 'author_name', sortable: true, filter: 'agTextColumnFilter' , lockVisible:true},
+    { headerName: 'Editor', field: 'editor_name', sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
+    { headerName: 'Publisher', field: 'pname', sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
     { headerName: 'Date of Publication', field: 'year', sortable: true, filter: false , lockVisible:true},
     { headerName: 'Edition', field: 'edition', sortable: true, filter: false, lockVisible:true},
-    { headerName: 'Category', field: 'category', sortable: true, filter: false, lockVisible:true},
+    { headerName: 'Category', field: 'category', sortable: true, filter: 'agTextColumnFilter', lockVisible:true},
   ];
 
   return (

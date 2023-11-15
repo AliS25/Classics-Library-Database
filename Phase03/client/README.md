@@ -1,6 +1,6 @@
 # React + Vite
 
-# react, vite, express, node.js, cors, pg, ag_grid, postgresql, 
+# react, vite, express, node.js, cors, pg, ag_grid, postgresql, nodemon
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

@@ -1,9 +1,8 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+
   text-align: center;
-  width: 65%;
+  width: 100%;
 }
 
 .logo {
@@ -95,13 +94,15 @@ h1{
 
 img{
   margin-bottom: 2rem;
-  width: 100%;
+  width: 60%;
   display: flex;
+  margin: auto;
 }
 
 .search-filter-div{
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   border-radius: 10px;
@@ -112,4 +113,102 @@ img{
   font-size: 1rem;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   border-radius: 5px;
+  margin-right: 1em;
+}
+
+.nav {
+  color: rgb(99, 3, 99);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 5px solid rgb(99, 3, 99);
+  display: flex;
+  margin-bottom: 2em;
+  box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.2); /* Add an inset box shadow at the bottom */
+
+  /* Add an underline effect */
+}
+
+.nav h2{
+margin-left: 1em;
+
+}
+
+.nav button{
+  margin-right: 2em;
+  background-color: rgb(128, 5, 128);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nav button:hover{
+  background-color: rgb(99, 3, 99);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.bookList{
+  margin: auto;
+  width: 90%;
+}
+
+.header{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  font-size: 130%;
+}
+
+.footer{
+  background-color: rgb(99, 3, 99);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  bottom: 0;
+  width: 100%;
+  margin-top: 2em;
+}
+
+/* BookDetails.css */
+
+/* BookDetailPopup.css */
+
+.book-detail-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-detail-popup {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.book-detail-popup button {
+  margin-top: 10px;
 }

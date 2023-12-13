@@ -19,6 +19,7 @@ const BookDetailsModal = ({ isOpen, onRequestClose, book }) => {
       <p>Editor: {book.editor_name}</p>
       <p>Publisher: {book.pname}</p>
       <p>Date of Publication: {book.year}</p>
+      <p>Faculty: {book.fname}</p>
       <p>Edition: {book.edition}</p>
       <p>Category: {book.category}</p>
       <p>Availability: {book.availability}</p>
@@ -28,9 +29,9 @@ const BookDetailsModal = ({ isOpen, onRequestClose, book }) => {
       {/* Add your additional book information here */}
 
 <div className='bookactions'>
-      <button>Edit</button>
+      {/* <button>Edit</button>
       <button>Delete</button>
-      <button>Reserve Book</button>
+      <button>Reserve Book</button> */}
       <button onClick={onRequestClose}>Close</button>
     </div>
     </Modal>

@@ -5,18 +5,18 @@ import Modal from 'react-modal';
 
 const AddBookModal = ({ isOpen, onRequestClose, onAddBook }) => {
     const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [editor, setEditor] = useState('');
+    const [author, setAuthor] = useState(''); //
+    const [editor, setEditor] = useState('missing editor'); //
     const [category, setCategory] = useState('');
     const [availability, setAvailability] = useState('');
     const [additional_notes, setAdditionalNotes] = useState('');
     const [room, setRoom] = useState('');
     const [shelf, setShelf] = useState('');
     const [pname, setPname] = useState('');
-    const [fname, setFname] = useState('');
-    const [dname, setDname] = useState('');
-    const [year, setYear] = useState('');
-    const [edition, setEdition] = useState('');
+    const [fname, setFname] = useState('n/a');
+    const [dname, setDname] = useState('n/a');
+    const [year, setYear] = useState(''); //
+    const [edition, setEdition] = useState('missing');
     // const [copy, setCopy] = useState(4000);
 
 
@@ -27,7 +27,7 @@ const AddBookModal = ({ isOpen, onRequestClose, onAddBook }) => {
       alert('Please enter a title and edition for the book.');
       return;
     }
-
+    
 
     try {
         //http://cosc-257-node08.cs.amherst.edu
@@ -98,8 +98,7 @@ const AddBookModal = ({ isOpen, onRequestClose, onAddBook }) => {
         <label>Category:</label>
         <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
 
-        <label>Availability:</label>
-        <input type="text" value={availability} onChange={(e) => setAvailability(e.target.value)} />
+       
 
         <label>Additional Notes:</label>
         <input type="text" value={additional_notes} onChange={(e) => setAdditionalNotes(e.target.value)} />
@@ -121,7 +120,14 @@ const AddBookModal = ({ isOpen, onRequestClose, onAddBook }) => {
 
         <label>Year:</label>
         <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
+ {/* <label>Availability:</label>
+        <input type="text" value={availability} onChange={(e) => setAvailability(e.target.value)} /> */}
 
+        <label>Availability:</label>
+        <select value={availability} onChange={(e) => setAvailability(e.target.value)}>
+          <option value="available">Available</option>
+          <option value="not-available">Not Available</option>
+        </select>
         <button type="button" onClick={handleAddBook}>Add Book</button>
         <button type="button" onClick={onRequestClose}>Cancel</button>
       </form>

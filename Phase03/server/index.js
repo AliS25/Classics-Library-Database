@@ -63,6 +63,10 @@ app.post("/books", async (req, res) => {
         [aname]
       );
 
+      await pool.query(
+        "INSERT INTO editor (ename) VALUES ($1) ON CONFLICT (ename) DO NOTHING",
+        [ename]
+      );
    
 
       // Insert into the book table
@@ -83,8 +87,17 @@ app.post("/books", async (req, res) => {
         ]
       );
   
-  
+   // Insert into the written_by table
+   await pool.query(
+    "INSERT INTO written_by (aname, title, edition, copy) VALUES ($1, $2, $3, $4)",
+    [aname, title, edition, bookResult.rows[0].copy]
+  );
     
+  // Insert into the edited_by table
+  await pool.query(
+    "INSERT INTO edited_by (ename, title, edition, copy) VALUES ($1, $2, $3, $4)",
+    [ename, title, edition, bookResult.rows[0].copy]
+  );
   
       res.json(bookResult.rows[0]);
     } catch (err) {
@@ -93,19 +106,6 @@ app.post("/books", async (req, res) => {
     }
   });
   
-// app.post("/books", async (req, res) => {
-//     try {
-//         const { title, edition, copy, category, availability, additional_notes, room, shelf, pname, fname, dname, year } = req.body;
-//         const newBook = await pool.query(
-//             "INSERT INTO book (title, edition, copy, category, availability, additional_notes, room, shelf, pname, fname, dname, year) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *",
-//             [title, edition, copy, category, availability, additional_notes, room, shelf, pname, fname, dname, year]
-//         );
-
-//         res.json(newBook.rows[0]);
-//     } catch (err) {
-//         console.error(err.message);
-//     }
-// });
 
 //get all books
 
@@ -119,6 +119,53 @@ app.get("/books", async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
+});
+
+// Delete a book
+app.delete("/books", async (req, res) => {
+  try {
+      const {
+          title,
+          edition,
+          copy
+      } = req.body;
+
+      // Delete the book record
+      const deletedBook = await pool.query(
+          "DELETE FROM book WHERE title = $1 AND edition = $2 AND copy = $3 RETURNING *",
+          [title, edition, copy]
+      );
+
+      res.json(deletedBook.rows[0]);
+      console.log(deletedBook.rows[0]);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Internal Server Error");
+  }
+});
+
+// Update availability of book
+app.patch("/books/:title/:edition/:copy", async (req, res) => {
+  const { title, edition, copy } = req.params;
+  const { availability } = req.body;
+
+  try {
+    const response = await pool.query(
+      "UPDATE book SET availability = $1 WHERE title = $2 AND edition = $3 AND copy = $4 RETURNING *",
+      [availability, title, edition, copy]
+    );
+
+    if (response.rows.length === 0) {
+      // Book with the given identifiers not found
+      return res.status(404).json({ error: "Book not found" });
+    }
+
+    // Respond with the updated book
+    res.json(response.rows[0]);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 

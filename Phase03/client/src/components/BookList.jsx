@@ -62,7 +62,8 @@ const BookList = () => {
     { headerName: 'Date of Publication', field: 'year', sortable: true, filter: false , lockVisible:true, resizable:true},
     { headerName: 'Edition', field: 'edition', sortable: true, filter: false, lockVisible:true, resizable:true},
     { headerName: 'Category', field: 'category', sortable: true, filter: 'agTextColumnFilter', lockVisible:true, resizable:true},
-    { headerName: 'Actions', field: 'View Details', resizable:true, cellRenderer: (params) => <button onClick={()=>handleViewDetails(params)}>View Book Details</button> }
+    { headerName: 'Actions', field: 'View Details', resizable:true, cellRenderer: (params) => <button onClick={()=>handleViewDetails(params)}>View Book Details</button> },
+    { headerName: 'Availability', field: 'availability', sortable: true, filter: 'agTextColumnFilter', lockVisible:true, resizable:true}
   ];
 
   const handleViewDetails = (book) => {

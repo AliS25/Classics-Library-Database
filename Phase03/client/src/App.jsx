@@ -2,7 +2,6 @@ import { useState } from 'react'
 import React, {Fragment} from 'react'
 import './App.css'
 import BookList from './components/BookList'
-import Filters from './components/Filters'
 import AddBookModal from './components/AddBookModal';
 import PasswordModal from './components/PasswordModal'; // Add PasswordModal component import
 

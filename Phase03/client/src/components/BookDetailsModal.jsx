@@ -12,7 +12,7 @@ const BookDetailsModal = ({ isOpen, onRequestClose, book }) => {
   const [password, setPassword] = useState('');
   const [newAvailability, setNewAvailability] = useState(book.availability); // Initialize with the current availability
 
-  const correctPassword = 'admin'; // Replace with your desired password
+  const correctPassword = 'admin'; // Replace with the password you want to use
 
 
   const handleDelete = async () => {
